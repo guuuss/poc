@@ -1,38 +1,39 @@
-﻿<div>
-    <h1>{{product.name}}</h1>
-    <p>{{product.catagory}}</p>
-    <p>{{product.brand}}</p>
+﻿<div >
+    <a href="#/" class="back"> Terug </a>
 
-    <ul class="countries-thumbs">
+    <h1>Name: {{item.Name}}</h1>
+    <h3>Category: {{item.Category}}</h3>
+    <h3>Brand: {{item.Brand}}</h3>
+
+    <ul class="">
         <li>
-            <img ng-src=./img/{{product.name}}>
+            <img href="#/products/img/{{item.Product_id}}" />
         </li>
     </ul>
 
-    <a href="#/" class="back"> Terug </a>
-
-    <ul class="specs">
+    <ul class="">
         <li>
             <span>Price</span>
             <dl>
-                <dd>{{product.price}}</dd>
+                <dd>{{item.Price}}</dd>
             </dl>
         </li>
         <li>
             <span>Quantity available</span>
             <dl>
-                <dd>{{product.quantity}}</dd>
+                <dd>{{item.Quantity}}</dd>
             </dl>
         </li>
         <li>
             <span>Brand</span>
             <dl>
-                <dd>{{product.brand}}</dd>
+                <dd>{{item.Brand}}</dd>
             </dl>
         </li>
     </ul>
-    <form ng-submit="product.addToCart()" ng-if="bool" class="fade">
-        <button ng-mouseover="bool=true">Add to cart</button>
+
+    <form ng-submit="item.addToCart()">
+        <button>Add to cart</button>
     </form>
 </div>
 

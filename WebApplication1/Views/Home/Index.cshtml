@@ -15,9 +15,7 @@
         </select>
     </div>
 
-    <div class="breadcrum">
-        <p>{{product.catagory}} > {{product.brand}}</p>
-    </div>
+ 
     <div class="products">
         <ul>
             <li class="products" ng-animate="'animate''" ng-repeat="product in products | filter:query | orderBy:orderProp">

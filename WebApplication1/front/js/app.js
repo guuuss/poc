@@ -13,11 +13,11 @@ pocapp.config(['$routeProvider',
       $routeProvider.
         when('/products', {
             templateUrl: 'partials/product-list.html',
-            controller: 'ProductListCtrl'
+            controller: 'ProductController'
         }).
-        when('/products/:productdetails/:productid', {
+        when('/products/:Product_id', {
             templateUrl: 'partials/product-detail.html',
-            controller: 'ProductDetailCtrl'
+            controller: 'ProductDetailController'
         }).
         when('/admin/:controlpanel', {
             templateUrl: 'partials/adminpanel.html',

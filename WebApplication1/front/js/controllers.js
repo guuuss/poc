@@ -6,7 +6,6 @@ var productController = angular.module('productControllers', []);
 productController.controller('ProductController', ['$scope', '$routeParams', '$http',
         function ($scope, $routeParams, $http) {
 
-            var product = { catagory: 'Schoen', brand: 'Boen', id: 1, price: 10, quantity: 5 };
             var products;
             var query;
             var orderProp;
@@ -22,11 +21,32 @@ productController.controller('ProductController', ['$scope', '$routeParams', '$h
 
             }
             $scope.fetchProducts();
+
         }
+]);
 
-    ]);
+productController.controller('ProductDetailController', ['$scope', '$routeParams', '$http',
+        function ($scope, $routeParams, $http) {
 
-/*productController.factory('TestService', ['$http', function ($http) {
+            $scope.number = $routeParams.Product_id;
+            var items = this;
+
+            $scope.fetchDetails = function () {
+                console.log("gonna try for details");
+                $http.get('../api/product/' + $scope.number).then(
+                    function (response) {
+                        $scope.item = response.data;
+                      
+                        console.log("1 item toch?", $scope.item)
+
+                    }, function (response) {
+                        $scope.error = response;
+                    });
+            }
+            $scope.fetchDetails();
+        }]);
+/*
+productController.controller('TestService', ['$http', function ($http) {
     var productService = {};
 
     productService.getProducts = function () {

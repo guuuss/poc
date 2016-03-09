@@ -18,10 +18,7 @@
         </div>
     </div>
 
-    <div class="breadcrum">
-        <p>{{product.Category}} > {{product.Brand}}</p>
-    </div>
-
+  
     <div class="col-md-12">
         <div class="center-block centered-div">
         Search: <input ng-model="query">
@@ -33,10 +30,10 @@
     </div>
     <div class="products">
         <ul>
-            <li class="products" ng-animate="'animate''" ng-repeat="p in products | filter:query | orderBy:orderProp">
+            <li class="products1" ng-animate="'animate''" ng-repeat="p in products | filter:query | orderBy:orderProp">
                 <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
                     <img href="#/products/img/{{p.Product_id}}" />
-                    <a href="#/products/{{p.id}}">{{p.Name}}</a>
+                    <a href="#/products/{{p.Product_id}}" ng-click="fetchDetails()">{{p.Name}}</a>
                     <p> {{p.Price}}</p>
                     <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{p.Quantity}}" /> </div>
                     <input class="cartbut" type="button" ng-click="addToCart(p)" value="Add to cart" />

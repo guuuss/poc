@@ -1,0 +1,22 @@
+﻿
+li {
+    list-style: 0;
+}
+
+body
+{
+    margin: 50px;
+    background-colour: #333;
+    colour: #ff0000;
+    overflow: hidden;
+}
+
+.animate-enter .animate-enter-active, .animate-leave {
+    left: 0;
+}
+
+.animate-leave .animate-leave-active, .animate-enter {
+    left: 500px;
+}
+
+

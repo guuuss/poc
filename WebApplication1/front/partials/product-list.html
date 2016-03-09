@@ -1,44 +1,44 @@
-﻿<div  ng-controller="ProductListControl" class="container-fluid">
-    <div class="logmein">
-        <form ng-submit="logMeIn()">
-            Username: <input type="text" /><br />
-            Password: <input type="password" /><br /> 
-            <button value="Log in"> Log in </button>
-        </form>
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 pull-right">
+                <form class="form-signin" ng-submit="logMeIn()">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+
+        </div>
     </div>
 
-    <div class="searchsort">
+    <div class="breadcrum">
+        <p>{{product.Category}} > {{product.Brand}}</p>
+    </div>
+
+    <div class="searchsort col-sm-8">
         Search: <input ng-model="query">
         Sort by: <select ng-model="orderProp">
             <option value="text">Alphabetical</option>
             <option value="age">Newest</option>
         </select>
     </div>
-
-    <div class="breadcrum">
-        <p>{{product.catagory}} > {{product.brand}}</p>
-    </div>
-
     <div class="products">
         <ul>
-            <li>
-                <div>
-                    <img href="#/products/img/{{product.id}}" />
-                    <a href="#/products/{{product.id}}">{{product.name}}</a>
-                    <p> {{product.price}}</p>
-                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{product.quantity}}" /> </div>
-                    <input class="cartbut" type="button" ng-click="product.addToCart()" value="Add to cart" />
 
-                </div>
-            </li>
-
-            <li class="products" ng-animate="'animate''" ng-repeat="product in products | filter:query | orderBy:orderProp">
-                <div>
-                    <img href="#/products/img/{{product.id}}" />
-                    <a href="#/products/{{product.id}}">{{product.name}}</a>
-                    <p> {{product.price}}</p>
-                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{product.quantity}}" /> </div>
-                    <input class="cartbut" type="button" ng-click="product.addToCart()" value="Add to cart" />
+            <li class="products" ng-animate="'animate''" ng-repeat="p in products | filter:query | orderBy:orderProp">
+                <div class="col-sm-8">
+                    <img href="#/products/img/{{p.Product_id}}" />
+                    <a href="#/products/{{p.id}}">{{p.Name}}</a>
+                    <p> {{p.Price}}</p>
+                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{p.Quantity}}" /> </div>
+                    <input class="cartbut" type="button" ng-click="addToCart(p)" value="Add to cart" />
                 </div>
             </li>
         </ul>

@@ -5,6 +5,7 @@
 var pocapp = angular.module('pocApp', [
   'ngRoute',
   'ngAnimate',
+  'productControllers'
 ]);
 
 pocapp.config(['$routeProvider',
@@ -27,6 +28,7 @@ pocapp.config(['$routeProvider',
             controller: 'shoppingcartCtrl'
         }).
         otherwise({
-            redirectTo: '/products'
+            templateUrl: 'partials/product-list.html',
+            controller: 'ProductController'
         });
   }]);

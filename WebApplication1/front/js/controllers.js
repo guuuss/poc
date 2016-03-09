@@ -2,7 +2,27 @@
 
 /* Controllers */
 
-var productController = angular.module('pocApp', []);
+var productController = angular.module('productControllers', []);
+productController.controller('ProductController', ['$scope', '$routeParams', '$http',
+        function ($scope, $routeParams, $http) {
+
+            var product = { catagory: 'Schoen', brand: 'Boen', id: 1, price: 10, quantity: 5 };
+            var products;
+
+            $scope.fetchProducts = function () {
+                console.log("gonna try");
+                $http.get("../api/product").then(
+                function (response) {
+                    $scope.products = response.data;
+                }, function (response) {
+                    $scope.error = response;
+                });
+
+            }
+            $scope.fetchProducts();
+        }
+
+    ]);
 
 /*productController.factory('TestService', ['$http', function ($http) {
     var productService = {};
@@ -44,9 +64,11 @@ productController.controller('ProductDetailCtrl', function ($scope, $routeParams
     }
 });
 
+
 //productController.controller('AddToCartCtrl', function($scope, $selectedProduct)
 
-    /*/var countriesControllers = angular.module('countriesControllers', []);
+    /*/
+    /*var countriesControllers = angular.module('countriesControllers', []);
     
     countriesControllers.controller('CountryListCtrl', ['$scope', '$http',
       function($scope, $http) {
@@ -161,8 +183,5 @@ productController.controller('ProductDetailCtrl', function ($scope, $routeParams
           });
       };
   }]);
+*/
 
-countryControllers.controller('countryDetailCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
-      $scope.todo.text = $routeParams.countrytext;
-}]); */

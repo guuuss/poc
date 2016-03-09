@@ -1,21 +1,7 @@
-﻿.logmein
-{
-    display: block;
-    position: absolute;
-    top: 50px;
-    right: 100px;
-    width: 240px;
-}
-.logmein button {
-    position: relative;
-    left: 120px;
-    top: 10px;
-}
+﻿
 
 .searchsort {
     position:relative;
-    left: 250px;
-    top: 150px;
 }
 
 .breadcrum {
@@ -26,9 +12,6 @@
 }
 
 .products {
-    position: absolute;
-    top: 160px;
-    left: 250px;
 }
 
 .products li {

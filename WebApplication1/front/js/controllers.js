@@ -8,6 +8,8 @@ productController.controller('ProductController', ['$scope', '$routeParams', '$h
 
             var product = { catagory: 'Schoen', brand: 'Boen', id: 1, price: 10, quantity: 5 };
             var products;
+            var query;
+            var orderProp;
 
             $scope.fetchProducts = function () {
                 console.log("gonna try");

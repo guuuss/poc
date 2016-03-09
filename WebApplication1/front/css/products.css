@@ -1,15 +1,7 @@
-﻿.logmein
-{
-    display: block;
-    position: absolute;
-    top: 50px;
-    right: 200px;
-    width: 240px;
-    float: right;
-}
-.center {
+﻿.centered-div {
     margin-left: auto;
     margin-right: auto;
+    text-align:center;
 }
 .logmein button {
     position: relative;
@@ -24,23 +16,20 @@
 }
 
 .breadcrum {
-    position: absolute;
     top: 200px;
     left: 250px;
     width: 260px;
 }
 
 .products {
-    position: absolute;
-    top: 250px;
-    left: 250px;
+  
 }
-
-.products li {
+.roundedCorner {
     border: 2px solid black;
-    list-style: none;
-    width: 700px;
-    height: 200px;
+    border-radius:8px;
+}
+.products li {
+    list-style: none;   
 }
 
 .products li div img {

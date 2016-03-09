@@ -1,0 +1,40 @@
+﻿
+<div>
+    <div class="loggedIn">
+        U bent ingelogt als: {{admin.name}}
+        <input type="button" name="log out" value="Log out" />
+    </div>
+   <div>
+       Search: <input ng-model="query">
+       Order by: <select ng-model="orderProp">
+           <option value="text">Alphabetical</option>
+           <option value="age">Newest</option>
+       </select>
+
+       <ul class="adminproducts">
+           <li ng-repeat="product in productlist.products | filter:query | orderBy:orderProp">
+               <input type="checkbox">
+               <img ng-src="./plaatjes/{{product.name}}" alt="{{product.name}}" />
+               Name: <input type="text" placeholder="{{product.name}}" />
+               Quantity available: <input type="number" name="{{product.quantity}}" />
+               Price: <input type="number" name="{{product.price}}" />
+               Catagory: <input type="text" placeholder="{{product.catagory}}" />
+               Brand: <input type="text" placeholder="{{product.brand}}" />
+           </li>
+       </ul>
+       <button type="button" name="delete" value="Delete" ng-click="deleteProduct()"/>
+       <button type="submit" name="save" value="Save" ng-click="updateProduct()"/> 
+    </div>
+    <div>
+        <h1>Add new products here:</h1>
+        <form ng-submit="newProduct.addProduct()">
+            <input type="text" ng-model="newProduct.name" size="30" placeholder="add product name here" />
+            <input type="number" ng-model="newProduct.price" size="30" placeholder="add product price here" />
+            <input type="text" ng-model="newProduct.brand" size="30" placeholder="add product brand here" />
+            <input type="text" ng-model="newProduct.catagory" size="30" placeholder="add product catagory here" />
+            <input type="number" ng-model="newProduct.quantity" size="30" />
+ !!!!!!!           voeg nog een image toe later
+            <input type="submit" value="add" />
+        </form>
+    </div>
+</div>

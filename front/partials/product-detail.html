@@ -1,0 +1,38 @@
+﻿<div>
+    <h1>{{product.name}}</h1>
+    <p>{{product.catagory}}</p>
+    <p>{{product.brand}}</p>
+
+    <ul class="countries-thumbs">
+        <li>
+            <img ng-src=./img/{{product.name}}>
+        </li>
+    </ul>
+
+    <a href="#/" class="back"> Terug </a>
+
+    <ul class="specs">
+        <li>
+            <span>Price</span>
+            <dl>
+                <dd>{{product.price}}</dd>
+            </dl>
+        </li>
+        <li>
+            <span>Quantity available</span>
+            <dl>
+                <dd>{{product.quantity}}</dd>
+            </dl>
+        </li>
+        <li>
+            <span>Brand</span>
+            <dl>
+                <dd>{{product.brand}}</dd>
+            </dl>
+        </li>
+    </ul>
+    <form ng-submit="product.addToCart()" ng-if="bool" class="fade">
+        <button ng-mouseover="bool=true">Add to cart</button>
+    </form>
+</div>
+

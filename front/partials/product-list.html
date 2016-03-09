@@ -1,0 +1,46 @@
+﻿<div  ng-controller="ProductListControl" class="container-fluid">
+    <div class="logmein">
+        <form ng-submit="logMeIn()">
+            Username: <input type="text" /><br />
+            Password: <input type="password" /><br /> 
+            <button value="Log in"> Log in </button>
+        </form>
+    </div>
+
+    <div class="searchsort">
+        Search: <input ng-model="query">
+        Sort by: <select ng-model="orderProp">
+            <option value="text">Alphabetical</option>
+            <option value="age">Newest</option>
+        </select>
+    </div>
+
+    <div class="breadcrum">
+        <p>{{product.catagory}} > {{product.brand}}</p>
+    </div>
+
+    <div class="products">
+        <ul>
+            <li>
+                <div>
+                    <img href="#/products/img/{{product.id}}" />
+                    <a href="#/products/{{product.id}}">{{product.name}}</a>
+                    <p> {{product.price}}</p>
+                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{product.quantity}}" /> </div>
+                    <input class="cartbut" type="button" ng-click="product.addToCart()" value="Add to cart" />
+
+                </div>
+            </li>
+
+            <li class="products" ng-animate="'animate''" ng-repeat="product in products | filter:query | orderBy:orderProp">
+                <div>
+                    <img href="#/products/img/{{product.id}}" />
+                    <a href="#/products/{{product.id}}">{{product.name}}</a>
+                    <p> {{product.price}}</p>
+                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{product.quantity}}" /> </div>
+                    <input class="cartbut" type="button" ng-click="product.addToCart()" value="Add to cart" />
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

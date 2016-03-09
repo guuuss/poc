@@ -1,0 +1,19 @@
+﻿<div>
+    <div class="loggedIn">
+        U bent ingelogt als: {{customer.name}}
+        <input type="button" name="log out" value="Log out" />
+    </div>
+    <div>
+        <ul class="shoppingcart">
+            <li ng-repeat="product in customer.selectedproducts | filter:query | orderBy:orderProp">
+                <input type="checkbox">
+                <img ng-src="./plaatjes/{{product.name}}" alt="{{product.name}}" />
+                Name: {{product.name}}
+                Quantity: <input type="number" name="{{product.quantity}}" />
+                Price: {{product.price}}
+                <input type="button" name="remove" value="Remove product" />
+            </li>
+        </ul>
+    </div>
+    <input type="submit" name="bestelThis" value="Verder naar bestellen" ng-click="FinishOrder()"/>
+</div>

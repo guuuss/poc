@@ -1,0 +1,79 @@
+﻿.logmein
+{
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 240px;
+}
+.logmein button {
+    position: relative;
+    left: 120px;
+    top: 10px;
+}
+
+.searchsort {
+    position:relative;
+    left: 250px;
+    top: 150px;
+}
+
+.breadcrum {
+    position: relative;
+    top: 200px;
+    left: 120px;
+    width: 260px;
+}
+
+.products {
+    position: absolute;
+    top: 160px;
+    left: 250px;
+}
+
+.products li {
+    border: 2px solid black;
+    list-style: none;
+    width: 700px;
+    height: 200px;
+}
+
+.products li div img {
+    position: relative;
+    top: 20px;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    left: 20px;
+
+}
+.products li div a {
+    position:relative;
+    left: 40px;
+}
+
+.products li div p {
+    position: relative;
+    left: 150px;
+}
+
+.quant {
+   position:relative;
+   top: -70px;
+     width: 70px;
+    float: right;
+    display: block;
+}
+
+.quant input {
+    width: 50px;
+}
+
+.cartbut {
+    position: relative;
+    float: right;
+    left: 50px;
+}
+
+
+

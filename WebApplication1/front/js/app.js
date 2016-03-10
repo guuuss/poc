@@ -19,9 +19,9 @@ pocapp.config(['$routeProvider',
             templateUrl: 'partials/product-detail.html',
             controller: 'ProductDetailController'
         }).
-        when('/admin/:controlpanel', {
+        when('/partials/:adminpanel', {
             templateUrl: 'partials/adminpanel.html',
-            controller: 'AdminCtrl'
+            controller: 'AdminControl'
         }).
         when('/customer/:shoppingcart', {
             templateUrl: 'partials/shoppingcart.html',

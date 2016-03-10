@@ -11,7 +11,7 @@ productController.controller('ProductController', ['$scope', '$routeParams', '$h
             var orderProp;
 
             $scope.fetchProducts = function () {
-                console.log("gonna try");
+                console.log("probeer items te laden");
                 $http.get("../api/product").then(
                 function (response) {
                     $scope.products = response.data;
@@ -45,61 +45,55 @@ productController.controller('ProductDetailController', ['$scope', '$routeParams
             var items = this;
 
             $scope.fetchDetails = function () {
-                console.log("gonna try for details");
+                console.log("probeer details te laden");
                 $http.get('../api/product/' + $scope.number).then(
                     function (response) {
                         $scope.item = response.data;
-                      
-                        console.log("1 item toch?", $scope.item)
 
                     }, function (response) {
                         $scope.error = response;
                     });
             }
             $scope.fetchDetails();
+        }
+]);
 
 
-        }]);
+productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
+        function ($scope, $routeParams, $http) {
+            console.log("ben nu hier");
+
+            var product = this;
+            var products;
+            var query;
+            var orderProp;
+
+            $scope.fetchProducts = function () {
+                console.log("probeer die zooi te halen");
+                $http.get("../api/product").then(
+                function (response) {
+                    $scope.products = response.data;
+                }, function (response) {
+                    $scope.error = response;
+                });
+            }
+            $scope.fetchProducts();
+
+            product.saveProduct = function () {
+                console.log("save moet nog gemaakt worden");
+            }
+
+            product.deleteProducts = function () {
+                console.log("delete moet nog gemaakt worden", product.data);
+            }
+
+            product.updateProducts = function (product) {
+                console.log("update moet nog gemaakt worden", product.data);
+            }
+
+        }
+]);
 /*
-productController.controller('TestService', ['$http', function ($http) {
-    var productService = {};
-
-    productService.getProducts = function () {
-        return $http.get("/api/product");
-    };
-
-    return productService;
-
-}]);
-
-productController.controller('ProductListControl', function ($scope, TestService) {
-
-    getProducts();
-    function getProducts() {
-        TestService.getProducts()
-            .succes(function (studs) {
-                $scope.products = studs;
-                console.log($scope.products);
-            })
-            .error(function (error) {
-                $scope.status = "Cannot load data" + " " + error.message;
-                console.log($scope.status);
-            })
-    }
-});
-
-productController.controller('ProductDetailCtrl', function ($scope, $routeParams, TestService) {
-    function showDetails() {
-        TestService.getProducts()
-                .succes(function (studs) {
-                    $scope.product = studs[$routeParams.productid]
-                })
-                .error(function (error) {
-                    $scope.status = "Cannot load details" + error.message;
-                    console.log($scope.status);
-                })
-    }
-});
 
 
 //productController.controller('AddToCartCtrl', function($scope, $selectedProduct)

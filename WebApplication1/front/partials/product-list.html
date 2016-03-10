@@ -3,6 +3,7 @@
         <div class="col-md-2 pull-right">
                 <form class="form-signin" ng-submit="logMeIn()">
                     <h2 class="form-signin-heading">Sign In</h2>
+                    
                     <label for="inputEmail" class="sr-only">Email address</label>
                     <input type="email" id="inputEmail" name="emailinput" class="form-control" ng-model="emailinput" placeholder="Email address" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
@@ -17,7 +18,9 @@
 
         </div>
     </div>
-
+    <div>
+        <a href="#/partials/adminpanel" ng-click="fetchProducts()">Admin</a>
+    </div>
   
     <div class="col-md-12">
         <div class="center-block centered-div">

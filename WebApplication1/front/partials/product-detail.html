@@ -1,40 +1,34 @@
-﻿<div >
-    
-    <a href="#/" class="back"> Terug </a>
-
-    <h1>Name: {{item.Name}}</h1>
-    <h3>Category: {{item.Category}}</h3>
-    <h3>Brand: {{item.Brand}}</h3>
-
-    <ul class="">
-        <li>
-            <img href="#/products/img/{{item.Product_id}}" />
-        </li>
-    </ul>
-
-    <ul class="">
-        <li>
-            <span>Price</span>
-            <dl>
-                <dd>{{item.Price}}</dd>
-            </dl>
-        </li>
-        <li>
-            <span>Quantity available</span>
-            <dl>
-                <dd>{{item.Quantity}}</dd>
-            </dl>
-        </li>
-        <li>
-            <span>Brand</span>
-            <dl>
-                <dd>{{item.Brand}}</dd>
-            </dl>
-        </li>
-    </ul>
-
-    <form ng-submit="item.addToCart()">
-        <button>Add to cart</button>
-    </form>
+﻿<div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
+    <button class="btn btn-primary" ng-click="logout()">Logout</button>
+    <a href="#/" class="btn btn-primary"> Back </a>
 </div>
-
+<div class="container-fluid-detail">
+        <div class="center-block centered-div">
+            <h1>Name: {{item.Name}}</h1>
+            <h3>Brand: {{item.Brand}}</h3>
+        </div>
+        <div class="imageDetail">
+            <img href="#/products/img/{{item.Product_id}}" />
+        </div>
+        <div class="specsDetail">
+            <ul class="">
+                <li>
+                    <span>Price</span>
+                    <dl>
+                        <dd>{{item.Price}}</dd>
+                    </dl>
+                </li>
+                <li>
+                    <span>Quantity available</span>
+                    <dl>
+                        <dd>{{item.Quantity}}</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="cartBut">
+            <form>
+                <input class="btn btn-primary cartbut" type="button" ng-controller="shoppingcartCtrl" ng-click="addToCart(item,'/customer/shoppingcart')" value="Add to cart" />
+            </form>
+        </div>
+    </div>

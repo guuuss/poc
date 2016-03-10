@@ -1,19 +1,26 @@
 ﻿<div ng-controller="shoppingcartCtrlV2">
     <div class="loggedIn">
-        U bent ingelogt als: {{customer.name}}
-        <input type="button" name="log out" value="Log out" />
+        <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
+            <button class="btn btn-primary" ng-click="logout()">Logout</button>
+            <a href="#/" class="btn btn-primary"> Back </a>
+            <input class="btn btn-primary" type="submit" name="bestelThis" value="Wrapping up order" ng-controller="shoppingcartFunctionsCtrl" ng-click="FinishOrder()" />
+        </div>
     </div>
     <div>
-        <ul class="shoppingcart">
+        <ul class="shoppingcartProducts">
             <li ng-repeat="product in currentselectedproducts | filter:query | orderBy:orderProp">
-                <input type="checkbox" ng-model="product.Item.isSelected" />
-                <img ng-src="./plaatjes/{{product.Item.Name}}" alt="{{product.Item.Name}}" />
-                Name: {{product.Item.Name}}
-                Quantity: <input type="number" name="{{product.Quantity}}" ng-model="product.Quantity" value="{{product.Quantity}}" />
-                Price: {{product.Item.Price}}
-                <input type="button" name="remove" value="Remove product" ng-controller="shoppingcartFunctionsCtrl" ng-click="Remove(product.Item.isSelected,product)" />
+                <div class="row col-md-3 roundedCorner">
+                    <input type="checkbox" ng-model="product.Item.isSelected" /> <br />
+                    <img ng-src="./plaatjes/{{product.Item.Name}}" alt="{{product.Item.Name}}" />
+                    <div class="shoppingcartSpecs">
+                        Name: {{product.Item.Name}} <br />
+                        Quantity: <input type="number" name="{{product.Quantity}}" ng-model="product.Quantity" value="{{product.Quantity}}" /><br />
+                        Price: {{product.Item.Price}}<br />
+                    </div>
+                    <input type="button" name="remove" value="Remove product" ng-controller="shoppingcartFunctionsCtrl" ng-click="Remove(product.Item.isSelected,product)" />
+                </div>
             </li>
         </ul>
     </div>
-    <input type="submit" name="bestelThis" value="Wrapping up order" ng-controller="shoppingcartFunctionsCtrl" ng-click="FinishOrder()" />
+    
 </div>

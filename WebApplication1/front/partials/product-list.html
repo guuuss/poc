@@ -19,11 +19,9 @@
         </div>
     </div>
     <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
-        <a href="#/partials/adminpanel" ng-click="fetchProducts()">Admin</a>
-    </div>
-    <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
+        <a href="#/partials/adminpanel" class="btn btn-primary" ng-click="fetchProducts()">Admin</a>
         <button class="btn btn-primary" ng-click="logout()">Logout</button>
-        </div>
+    </div>
 
         <div class="col-md-12">
             <div class="center-block centered-div">
@@ -42,7 +40,7 @@
                     <a href="#/products/{{p.Product_id}}" ng-click="fetchDetails()">{{p.Name}}</a>
                     <p> {{p.Price}}</p>
                     <div class="quant">Quantity:<input type="number" name="{{p.Quantity}}" value="1" min="1" max="{{p.Quantity}}" ng-model="p.Quantity" /> </div>
-                    <input class="cartbut" type="button" ng-controller="shoppingcartCtrl" ng-click="addToCart(p,'/customer/shoppingcart')" value="Add to cart" />
+                    <input  class="btn btn-primary cartbut" type="button" ng-controller="shoppingcartCtrl" ng-click="addToCart(p,'/customer/shoppingcart')" value="Add to cart" />
                 </div>
             </li>
         </ul>

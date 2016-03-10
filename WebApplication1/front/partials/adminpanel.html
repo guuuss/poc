@@ -1,40 +1,39 @@
-﻿<div >
-    <div class="loggedIn">
-        U bent ingelogt als: {{admin.name}}
-        <input type="button" name="log out" value="Log out" />
+﻿<div class="container-fluid">
+    <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
+        <button class="btn btn-primary" ng-click="logout()">Logout</button>
+        <a href="#/" class="btn btn-primary"> Back </a>
     </div>
-    <div>
+    <div class="AdminSearch">
         Search: <input ng-model="query">
     </div>
     <div class="products" ng-controller="AdminControl as product">
         <ul>
-            <li class="nostyle" ng-repeat="p in products | filter:query">
+            <li class="adminProducts" ng-repeat="p in products | filter:query">
                 <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
-                    Name product: <input type="text" placeholder="{{p.Name}}" name="{{p.Name}}"ng-model="p.Name" />
-                    Quantity available: <input type="number" value="{{p.Quantity}}" name="{{p.Quantity}}" ng-model="p.Quantity"/>
-                    Price product: <input type="number" name="{{p.Price}}" ng-model="p.Price" value="{{p.Price}}" />
-                    Catagory product: <input type="text" placeholder="{{p.Category}}" name="{{p.Category}}" ng-model="p.Category"/>
-                    Brand product: <input type="text" placeholder="{{p.Brand}}" name="{{p.Brand}}" ng-model="p.Brand" /> <br />
-                    <input type="submit" value="delete" ng-click="deleteProduct(p.Product_id)"/>
-                    <input type="submit" value="update" ng-click="updateProduct(p)"/>
+                        Name product: <div class="adminprodInput"><input type="text" placeholder="{{p.Name}}" name="{{p.Name}}"ng-model="p.Name" /></div>
+                        Quantity available:<div class="adminprodInput"> <input type="number" value="{{p.Quantity}}" name="{{p.Quantity}}" ng-model="p.Quantity" /></div>
+                        Price product: <div class="adminprodInput"> <input type="number" name="{{p.Price}}" ng-model="p.Price" value="{{p.Price}}" /></div>
+                        Catagory product: <div class="adminprodInput"><input type="text" placeholder="{{p.Category}}" name="{{p.Category}}" ng-model="p.Category" /></div>
+                        Brand product: <div class="adminprodInput"><input type="text" placeholder="{{p.Brand}}" name="{{p.Brand}}" ng-model="p.Brand" /> </div>
+                    <input type="submit" class="btn btn-primary" value="delete" ng-click="deleteProduct(p.Product_id)" />
+                    <input type="submit" class="btn btn-primary" value="update" ng-click="updateProduct(p)" />
                 </div>
             </li>
         </ul>
     </div>
-    <div style="float:left">
+    <div class="AdminAdding">
         <h1>Add new products here:</h1>
         <form ng-controller="AdminControl">
-            <input type="text" ng-model="Name" size="30" placeholder="add product name here" />
-            <input type="number" ng-model="Price" size="30" placeholder="add product price here" />
-            <input type="text" ng-model="Brand" size="30" placeholder="add product brand here" />
-            <input type="text" ng-model="Category" size="30" placeholder="add product catagory here" />
-            <input type="number" ng-model="Quantity" size="30" />
-            !!!!!!!           voeg nog een image toe later
-            <input type="button" value="add" ng-click="saveProduct()"/>
+            Name: <div class="AdminAddingInput"><input type="text" ng-model="Name" size="30" placeholder="add product name here" /> </div>
+            Price: <div class="AdminAddingInput"><input type="number" ng-model="Price" size="30" placeholder="add product price here" /> </div>
+            Brand: <div class="AdminAddingInput"><input type="text" ng-model="Brand" size="30" placeholder="add product brand here" /></div>
+            Category: <div class="AdminAddingInput"><input type="text" ng-model="Category" size="30" placeholder="add product category here" /></div>
+            Quantity: <div class="AdminAddingInput"><input type="number" ng-model="Quantity" size="30" placeholder="add product quantity here" /></div>
+            <input type="button" class="btn btn-primary" value="add" style="margin-top:20px" saveProduct()" />
         </form>
     </div>
-    <div ng-controller="AdminControl as category">
-        All categories:
+    <div class="adminAllCategories" ng-controller="AdminControl as category">
+        <p>All categories:</p>
         <ul>
           <li ng-repeat="c in categories">
               Categorie: <span>{{c.Name}}</span>

@@ -12,6 +12,7 @@ namespace WebApplication1.Models
         public string Brand { get; set; }
         public double Price { get; set; }
         public int Category { get; set; }
+        public Category Cat { get; set; }
         public int Quantity { get; set; }
     }
 }

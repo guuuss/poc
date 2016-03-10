@@ -33,4 +33,12 @@
             <input type="button" value="add" ng-click="saveProduct()"/>
         </form>
     </div>
+    <div ng-controller="AdminControl as category">
+        All categories:
+        <ul>
+          <li ng-repeat="c in categories">
+              Categorie: <span>{{c.Name}}</span>
+          </li>  
+        </ul>
+    </div>
 </div>

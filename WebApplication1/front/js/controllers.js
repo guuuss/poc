@@ -87,6 +87,7 @@ productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
             var products;
             var query;
             var orderProp;
+            var categories;
 
             $scope.fetchProducts = function () {
                 console.log("probeer die zooi te halen");
@@ -98,7 +99,15 @@ productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
                 });
             }
             $scope.fetchProducts();
-
+            $scope.fetchCategories = function () {
+                $http.get("../api/category/").then(
+                function (response) {
+                    $scope.categories = response.data;
+                }, function (response) {
+                    $scope.error = response;
+                });
+            }
+            $scope.fetchCategories();
             $scope.saveProduct = function () {
                 var name = $scope.Name;
                 var price = $scope.Price;
@@ -132,6 +141,50 @@ productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
 
         }
 ]);
+productController.controller('shoppingcartCtrl', ['$scope', '$location', 'shoppingcartService', function ($scope, $location, shoppingcartService) {
+    $scope.selectedProducts = [];
+    $scope.addToCart = function (item, path) {
+        shoppingcartService.addSelectedProduct(item);
+        $location.url(path);
+
+    }
+}]);
+
+productController.service('shoppingcartService', function () {
+    var selectedProducts = [];
+    var addSelectedProduct = function (noItem) {
+        selectedProducts.push({ Item: noItem, isSelected: false, Quantity: noItem.Quantity });
+
+    }
+
+    var getSelectedProducts = function () {
+        return selectedProducts;
+    }
+
+    return {
+        addSelectedProduct: addSelectedProduct,
+        getSelectedProducts: getSelectedProducts
+    };
+
+});
+productController.controller('shoppingcartCtrlV2', function ($scope, shoppingcartService) {
+    $scope.currentselectedproducts = shoppingcartService.getSelectedProducts();
+});
+
+productController.controller('shoppingcartFunctionsCtrl', function ($scope, shoppingcartService) {
+    $scope.currentselectedproducts = shoppingcartService.getSelectedProducts();
+
+    $scope.Remove = function (toRemove, item) {
+        if (toRemove) {
+            var index = $scope.currentselectedproducts.indexOf(item);
+            $scope.currentselectedproducts.splice(index, 1);
+        }
+    }
+
+    $scope.FinishOrder = function () {
+        alert("Thank you for ordering!")
+    }
+});
 /*
 
 

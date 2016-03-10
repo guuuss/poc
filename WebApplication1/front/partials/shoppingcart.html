@@ -1,19 +1,19 @@
-﻿<div>
+﻿<div ng-controller="shoppingcartCtrlV2">
     <div class="loggedIn">
         U bent ingelogt als: {{customer.name}}
         <input type="button" name="log out" value="Log out" />
     </div>
     <div>
         <ul class="shoppingcart">
-            <li ng-repeat="product in customer.selectedproducts | filter:query | orderBy:orderProp">
-                <input type="checkbox">
-                <img ng-src="./plaatjes/{{product.name}}" alt="{{product.name}}" />
-                Name: {{product.name}}
-                Quantity: <input type="number" name="{{product.quantity}}" />
-                Price: {{product.price}}
-                <input type="button" name="remove" value="Remove product" />
+            <li ng-repeat="product in currentselectedproducts | filter:query | orderBy:orderProp">
+                <input type="checkbox" ng-model="product.Item.isSelected" />
+                <img ng-src="./plaatjes/{{product.Item.Name}}" alt="{{product.Item.Name}}" />
+                Name: {{product.Item.Name}}
+                Quantity: <input type="number" name="{{product.Quantity}}" ng-model="product.Quantity" value="{{product.Quantity}}" />
+                Price: {{product.Item.Price}}
+                <input type="button" name="remove" value="Remove product" ng-controller="shoppingcartFunctionsCtrl" ng-click="Remove(product.Item.isSelected,product)" />
             </li>
         </ul>
     </div>
-    <input type="submit" name="bestelThis" value="Verder naar bestellen" ng-click="FinishOrder()"/>
+    <input type="submit" name="bestelThis" value="Wrapping up order" ng-controller="shoppingcartFunctionsCtrl" ng-click="FinishOrder()" />
 </div>

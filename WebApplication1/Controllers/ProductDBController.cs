@@ -10,11 +10,21 @@ namespace WebApplication1.Controllers
 {
     public class ProductDBController : DatabaseController
     {
+        CategoryDBController cdbc = new CategoryDBController();
         public List<Product> products = new List<Product>();
 
         public ProductDBController()
         {
             products = GetAllProductsFromDatabase();
+
+        }
+        private void SetProductCategories()
+        {
+            foreach(Product p in products)
+            {
+                Category cat = cdbc.categories.FirstOrDefault(c => c.Category_id == p.Category);
+                p.Cat = cat;
+            }
         }
         public void DeleteProduct(int product_id)
         {

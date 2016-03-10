@@ -81,10 +81,26 @@ productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
 
             product.saveProduct = function () {
                 console.log("save moet nog gemaakt worden");
+                var name = $scope.Name;
+                var price = $scope.Price;
+                var brand = $scope.Brand;
+                var category = $scope.Category;
+                var quantity = $scope.Quantity;
+
+                var data = {"Name":name,"Price":price, "Brand": brand, "Category": category, "Quantity": quantity};
+                $http.post(
+                    '../api/product/', data
+                    ).success(function (data) {
+                        window.alert("succces!");
+                    }
+                    ).error(function (data) {
+                        window.alert(logindata);
+                    }
+                    );
             }
 
             product.deleteProducts = function () {
-                console.log("delete moet nog gemaakt worden", product.data);
+                console.log("delete moet nog gemaakt worden", product);
             }
 
             product.updateProducts = function (product) {

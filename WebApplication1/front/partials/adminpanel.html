@@ -21,16 +21,16 @@
             </li>
         </ul>
     </div>
-    <div style="float:left" ng-controller="AdminControl as product">
+    <div style="float:left">
         <h1>Add new products here:</h1>
         <form>
-            <input type="text" ng-model="product.Name" size="30" placeholder="add product name here" />
-            <input type="number" ng-model="product.Price" size="30" placeholder="add product price here" />
-            <input type="text" ng-model="product.Brand" size="30" placeholder="add product brand here" />
-            <input type="text" ng-model="product.Category" size="30" placeholder="add product catagory here" />
-            <input type="number" ng-model="product.Quantity" size="30" />
+            <input type="text" ng-model="Name" size="30" placeholder="add product name here" />
+            <input type="number" ng-model="Price" size="30" placeholder="add product price here" />
+            <input type="text" ng-model="Brand" size="30" placeholder="add product brand here" />
+            <input type="text" ng-model="Category" size="30" placeholder="add product catagory here" />
+            <input type="number" ng-model="Quantity" size="30" />
             !!!!!!!           voeg nog een image toe later
-            <input type="submit" value="add" ng-click="product.saveProduct()"/>
+            <input type="submit" value="add" ng-click="saveProduct()"/>
         </form>
     </div>
 </div>

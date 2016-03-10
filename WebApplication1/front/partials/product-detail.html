@@ -1,14 +1,17 @@
 ﻿<div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
     <button class="btn btn-primary" ng-click="logout()">Logout</button>
+</div>
+<div>
     <a href="#/" class="btn btn-primary"> Back </a>
 </div>
 <div class="container-fluid-detail">
+
         <div class="center-block centered-div">
             <h1>Name: {{item.Name}}</h1>
             <h3>Brand: {{item.Brand}}</h3>
         </div>
         <div class="imageDetail">
-            <img href="#/products/img/{{item.Product_id}}" />
+            <img ng-src="./plaatjes/{{item.Name}}.jpg" alt="{{item.Name}}" />
         </div>
         <div class="specsDetail">
             <ul class="">

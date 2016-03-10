@@ -36,7 +36,7 @@
         <ul>
             <li class="products1" ng-animate="'animate'" ng-repeat="p in products | filter:query | orderBy:orderProp">
                 <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
-                    <img href="#/products/img/{{p.Product_id}}" />
+                    <img ng-src="./plaatjes/{{p.Name}}.jpg" alt="{{p.Name}}" />
                     <a href="#/products/{{p.Product_id}}" ng-click="fetchDetails()">{{p.Name}}</a>
                     <p> {{p.Price}}</p>
                     <div class="quant">Quantity:<input type="number" name="{{p.Quantity}}" value="1" min="1" max="{{p.Quantity}}" ng-model="p.Quantity" /> </div>

@@ -2,16 +2,18 @@
     <div class="loggedIn">
         <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
             <button class="btn btn-primary" ng-click="logout()">Logout</button>
-            <a href="#/" class="btn btn-primary"> Back </a>
             <input class="btn btn-primary" type="submit" name="bestelThis" value="Wrapping up order" ng-controller="shoppingcartFunctionsCtrl" ng-click="FinishOrder()" />
         </div>
     </div>
     <div>
+        <a href="#/" class="btn btn-primary"> Back </a>
+    </div>
+    <div class="shoppingcartProducts">
         <ul class="shoppingcartProducts">
             <li ng-repeat="product in currentselectedproducts | filter:query | orderBy:orderProp">
                 <div class="row col-md-3 roundedCorner">
                     <input type="checkbox" ng-model="product.Item.isSelected" /> <br />
-                    <img ng-src="./plaatjes/{{product.Item.Name}}" alt="{{product.Item.Name}}" />
+                    <img ng-src="./plaatjes/{{product.Item.Name}}.jpg" alt="{{product.Item.Name}}" />
                     <div class="shoppingcartSpecs">
                         Name: {{product.Item.Name}} <br />
                         Quantity: <input type="number" name="{{product.Quantity}}" ng-model="product.Quantity" value="{{product.Quantity}}" /><br />

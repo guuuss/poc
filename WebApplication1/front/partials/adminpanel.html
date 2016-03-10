@@ -1,9 +1,9 @@
 ﻿<div class="container-fluid">
     <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
         <button class="btn btn-primary" ng-click="logout()">Logout</button>
-        <a href="#/" class="btn btn-primary"> Back </a>
     </div>
     <div class="AdminSearch">
+        <a href="#/" class="btn btn-primary"> Back </a>
         Search: <input ng-model="query">
     </div>
     <div class="products" ng-controller="AdminControl as product">
@@ -15,7 +15,7 @@
                         Price product: <div class="adminprodInput"> <input type="number" name="{{p.Price}}" ng-model="p.Price" value="{{p.Price}}" /></div>
                         Catagory product: <div class="adminprodInput"><input type="text" placeholder="{{p.Category}}" name="{{p.Category}}" ng-model="p.Category" /></div>
                         Brand product: <div class="adminprodInput"><input type="text" placeholder="{{p.Brand}}" name="{{p.Brand}}" ng-model="p.Brand" /> </div>
-                    <input type="submit" class="btn btn-primary" value="delete" ng-click="deleteProduct(p.Product_id)" />
+                    <input type="submit" class="btn" value="delete" ng-click="deleteProduct(p.Product_id)" />
                     <input type="submit" class="btn btn-primary" value="update" ng-click="updateProduct(p)" />
                 </div>
             </li>

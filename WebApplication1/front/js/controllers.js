@@ -21,7 +21,20 @@ productController.controller('ProductController', ['$scope', '$routeParams', '$h
 
             }
             $scope.fetchProducts();
-
+            $scope.logMeIn = function () {
+                var logindata = $scope.passwordinput;
+                var emaildata = $scope.emailinput;
+                var data = {"Password":logindata,"Email":emaildata};
+                $http.post(
+                    '../api/user/ValidateUser/', data
+                    ).success(function (data) {
+                        window.alert("succces!");
+                    }
+                    ).error(function (data) {
+                        window.alert(logindata);
+                    }
+                    );
+            }
         }
 ]);
 
@@ -44,6 +57,8 @@ productController.controller('ProductDetailController', ['$scope', '$routeParams
                     });
             }
             $scope.fetchDetails();
+
+
         }]);
 /*
 productController.controller('TestService', ['$http', function ($http) {

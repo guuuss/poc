@@ -45,25 +45,28 @@ namespace WebApplication1.Controllers
             {
                 MySqlConnection connection = Connection;
                 connection.Open();
-                string updatequery = @"update product Set name=@name, price=@price, brand=@brand WHERE product_id = @productid";
+                string updatequery = @"update product Set name=@name, price=@price, brand=@brand, category=@cat WHERE product_id = @productid";
                 MySqlCommand cmd = new MySqlCommand(updatequery, connection);
                 MySqlParameter productidParam = new MySqlParameter("@productid", MySqlDbType.Int16);
                 MySqlParameter nameParam = new MySqlParameter("@name", MySqlDbType.VarChar);
                 MySqlParameter priceParam = new MySqlParameter("@price", MySqlDbType.Double);
                 MySqlParameter brandParam = new MySqlParameter("@brand", MySqlDbType.VarChar);
                 MySqlParameter quantityParam = new MySqlParameter("@quantity", MySqlDbType.Int16);
+                MySqlParameter categoryParam = new MySqlParameter("@cat", MySqlDbType.Int16);
 
                 productidParam.Value = product.Product_id;
                 nameParam.Value = product.Name;
                 priceParam.Value = product.Price;
                 brandParam.Value = product.Brand;
                 quantityParam.Value = product.Quantity;
+                categoryParam.Value = product.Category;
 
                 cmd.Parameters.Add(productidParam);
                 cmd.Parameters.Add(quantityParam);
                 cmd.Parameters.Add(nameParam);
                 cmd.Parameters.Add(priceParam);
                 cmd.Parameters.Add(brandParam);
+                cmd.Parameters.Add(categoryParam);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException e)

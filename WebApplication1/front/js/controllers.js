@@ -2,7 +2,40 @@
 
 /* Controllers */
 
-var productController = angular.module('productControllers', []);
+var productController = angular.module('productControllers', ['ngCookies']);
+productController.controller('LoginController', ['$scope', '$http', '$cookies',
+    function($scope, $http, $cookies)
+    {
+        $scope.logMeIn = function () {
+            var logindata = $scope.passwordinput;
+            var emaildata = $scope.emailinput;
+            var data = { "Password": logindata, "Email": emaildata };
+            $http.post(
+                '../api/user/ValidateUser/', data
+                ).success(function (data) {
+                    $cookies.put('logincookie', 'usr');
+                }
+                ).error(function (data) {
+                    window.alert("Foute email en password combinatie ingevoerd!");
+                }
+                );
+        }
+        $scope.isNotLoggedIn = function () {
+            if($cookies.get('logincookie') == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        $scope.logout = function()
+        {
+            $cookies.remove('logincookie');
+        }
+    }
+]);
 productController.controller('ProductController', ['$scope', '$routeParams', '$http',
         function ($scope, $routeParams, $http) {
 
@@ -21,20 +54,7 @@ productController.controller('ProductController', ['$scope', '$routeParams', '$h
 
             }
             $scope.fetchProducts();
-            $scope.logMeIn = function () {
-                var logindata = $scope.passwordinput;
-                var emaildata = $scope.emailinput;
-                var data = {"Password":logindata,"Email":emaildata};
-                $http.post(
-                    '../api/user/ValidateUser/', data
-                    ).success(function (data) {
-                        window.alert("succces!");
-                    }
-                    ).error(function (data) {
-                        window.alert(logindata);
-                    }
-                    );
-            }
+            
         }
 ]);
 
@@ -79,32 +99,35 @@ productController.controller('AdminControl', ['$scope', '$routeParams', '$http',
             }
             $scope.fetchProducts();
 
-            product.saveProduct = function () {
-                console.log("save moet nog gemaakt worden");
+            $scope.saveProduct = function () {
                 var name = $scope.Name;
                 var price = $scope.Price;
                 var brand = $scope.Brand;
                 var category = $scope.Category;
                 var quantity = $scope.Quantity;
-
                 var data = {"Name":name,"Price":price, "Brand": brand, "Category": category, "Quantity": quantity};
                 $http.post(
                     '../api/product/', data
                     ).success(function (data) {
-                        window.alert("succces!");
+                        window.alert("Product is succesvol toegevoegd!");
+
                     }
                     ).error(function (data) {
-                        window.alert(logindata);
+                        window.alert("Helaas pindakaas!\n Het product is niet toegevoegd!");
                     }
                     );
             }
 
-            product.deleteProducts = function () {
-                console.log("delete moet nog gemaakt worden", product);
+            $scope.deleteProduct = function (id) {
+                $scope.number = id;
+                
+                $http.delete('../api/product/' + $scope.number).success(function (data) { window.alert("Product verwijderd!"); }).error(function (data) { window.alert("Product niet verwijderd... "); })
             }
 
-            product.updateProducts = function (product) {
-                console.log("update moet nog gemaakt worden", product.data);
+            $scope.updateProduct = function (p) {
+                $scope.number = p.Product_id;
+                var data = { "Product_id" : p.Product_id,"Name": p.Name, "Price": p.Price, "Brand": p.Brand, "Category": p.Category, "Quantity": p.Quantity };
+                $http.put('../api/product/' + $scope.number, data).success(function (data) { window.alert("Product aangepast!"); }).error(function (data) { window.alert("Product niet aangepast... "); })
             }
 
         }

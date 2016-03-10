@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div >
     <div class="loggedIn">
         U bent ingelogt als: {{admin.name}}
         <input type="button" name="log out" value="Log out" />
@@ -10,27 +10,27 @@
         <ul>
             <li class="nostyle" ng-repeat="p in products | filter:query">
                 <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
-                    Name product: <input type="text" placeholder="{{p.Name}}" />
-                    Quantity available: <input type="number" value="{{p.Quantity}}" />
-                    Price product: <input type="number" name="{{p.Price}}" value="{{p.Price}}" />
-                    Catagory product: <input type="text" placeholder="{{p.Category}}" />
-                    Brand product: <input type="text" placeholder="{{p.Brand}}" /> <br />
-                    <input type="submit" value="delete" ng-click="product.deleteProducts()"/>
-                    <input type="submit" value="update" ng-click="product.updateProducts()"/>
+                    Name product: <input type="text" placeholder="{{p.Name}}" name="{{p.Name}}"ng-model="p.Name" />
+                    Quantity available: <input type="number" value="{{p.Quantity}}" name="{{p.Quantity}}" ng-model="p.Quantity"/>
+                    Price product: <input type="number" name="{{p.Price}}" ng-model="p.Price" value="{{p.Price}}" />
+                    Catagory product: <input type="text" placeholder="{{p.Category}}" name="{{p.Category}}" ng-model="p.Category"/>
+                    Brand product: <input type="text" placeholder="{{p.Brand}}" name="{{p.Brand}}" ng-model="p.Brand" /> <br />
+                    <input type="submit" value="delete" ng-click="deleteProduct(p.Product_id)"/>
+                    <input type="submit" value="update" ng-click="updateProduct(p)"/>
                 </div>
             </li>
         </ul>
     </div>
     <div style="float:left">
         <h1>Add new products here:</h1>
-        <form>
+        <form ng-controller="AdminControl">
             <input type="text" ng-model="Name" size="30" placeholder="add product name here" />
             <input type="number" ng-model="Price" size="30" placeholder="add product price here" />
             <input type="text" ng-model="Brand" size="30" placeholder="add product brand here" />
             <input type="text" ng-model="Category" size="30" placeholder="add product catagory here" />
             <input type="number" ng-model="Quantity" size="30" />
             !!!!!!!           voeg nog een image toe later
-            <input type="submit" value="add" ng-click="saveProduct()"/>
+            <input type="button" value="add" ng-click="saveProduct()"/>
         </form>
     </div>
 </div>

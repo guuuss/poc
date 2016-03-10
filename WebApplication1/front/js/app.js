@@ -4,6 +4,7 @@
 
 var pocapp = angular.module('pocApp', [
   'ngRoute',
+  'ngCookies',
   'ngAnimate',
   'productControllers'
 ]);

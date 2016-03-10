@@ -54,11 +54,14 @@ namespace WebApplication1.Models
             {
                 MySqlConnection connection = Connection;
                 connection.Open();
-                string selectQueryUser = @"SELECT email,password FROM user WHERE email = @email";
+                string selectQueryUser = @"SELECT email,password FROM user WHERE email = @email AND password = @password";
                 MySqlCommand cmd = new MySqlCommand(selectQueryUser, connection);
                 MySqlParameter emailParam = new MySqlParameter("@email", MySqlDbType.VarChar);
+                MySqlParameter passwordParam = new MySqlParameter("@password", MySqlDbType.VarChar);
                 emailParam.Value = email;
+                passwordParam.Value = password;
                 cmd.Parameters.Add(emailParam);
+                cmd.Parameters.Add(passwordParam);
                 cmd.Prepare();
                 using (MySqlDataReader dataReader = cmd.ExecuteReader())
                 {

@@ -23,6 +23,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: api/Product/5
+        [System.Web.Http.HttpGet]
         public IHttpActionResult Get(int id)
         {
             Product product = productDBcontroller.products.FirstOrDefault(p => p.Product_id == id);
@@ -55,6 +56,7 @@ namespace WebApplication1.Controllers
         }
 
         // DELETE: api/Product/5
+        [System.Web.Http.HttpDelete]
         public void Delete(int id)
         {
             if (ProductExists(id))

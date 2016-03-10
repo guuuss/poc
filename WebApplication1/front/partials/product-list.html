@@ -1,5 +1,5 @@
 ﻿<div class="container-fluid">
-    <div class="row">
+    <div class="row" ng-show="isNotLoggedIn() == true" ng-controller="LoginController">
         <div class="col-md-2 pull-right">
                 <form class="form-signin" ng-submit="logMeIn()">
                     <h2 class="form-signin-heading">Sign In</h2>
@@ -18,30 +18,33 @@
 
         </div>
     </div>
-    <div>
+    <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
         <a href="#/partials/adminpanel" ng-click="fetchProducts()">Admin</a>
     </div>
-  
-    <div class="col-md-12">
-        <div class="center-block centered-div">
-        Search: <input ng-model="query">
-        Sort by: <select ng-model="orderProp">
-            <option value="text">Alphabetical</option>
-            <option value="Price">Price</option>
-        </select>
+    <div ng-show="isNotLoggedIn() == false" ng-controller="LoginController">
+        <button class="btn btn-primary" ng-click="logout()">Logout</button>
+        </div>
+
+        <div class="col-md-12">
+            <div class="center-block centered-div">
+                Search: <input ng-model="query">
+                Sort by: <select ng-model="orderProp">
+                    <option value="text">Alphabetical</option>
+                    <option value="Price">Price</option>
+                </select>
             </div>
+        </div>
+        <div class="products">
+            <ul>
+                <li class="products1" ng-animate="'animate''" ng-repeat="p in products | filter:query | orderBy:orderProp">
+                    <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
+                        <img href="#/products/img/{{p.Product_id}}" />
+                        <a href="#/products/{{p.Product_id}}" ng-click="fetchDetails()">{{p.Name}}</a>
+                        <p> {{p.Price}}</p>
+                        <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{p.Quantity}}" /> </div>
+                        <input class="cartbut" type="button" ng-click="addToCart(p)" value="Add to cart" />
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="products">
-        <ul>
-            <li class="products1" ng-animate="'animate''" ng-repeat="p in products | filter:query | orderBy:orderProp">
-                <div class="row col-md-3 roundedCorner" style="margin:5px 5px 5px 5px;">
-                    <img href="#/products/img/{{p.Product_id}}" />
-                    <a href="#/products/{{p.Product_id}}" ng-click="fetchDetails()">{{p.Name}}</a>
-                    <p> {{p.Price}}</p>
-                    <div class="quant">Quantity:<input type="number" name="quantity" value="1" min="1" max="{{p.Quantity}}" /> </div>
-                    <input class="cartbut" type="button" ng-click="addToCart(p)" value="Add to cart" />
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>

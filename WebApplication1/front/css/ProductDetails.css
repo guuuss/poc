@@ -1,0 +1,48 @@
+﻿.container-fluid-detail {
+    border: 1px dotted black;
+    width: 900px;
+    height: 500px;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+
+.imageDetail img {
+    border: 1px solid black;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    left: 20px;
+}
+
+.specsDetail {
+    float: right;
+    position: relative;
+    list-style: none;
+    top: -210px;
+    right: 250px;
+}
+
+.specsDetail li {
+    list-style:none;
+}
+
+.specsDetail span {
+     font-weight: 700;
+     font-size:x-large;
+}
+.specsDetail dd {
+    font-weight: 900;
+    font-size:xx-large;
+}
+
+.cartBut {
+    float: right;
+    position: relative;
+    top: -100px;
+    left: 150px;
+}
+.cartBut button {
+    width: 90px;
+    height: 90px;
+}

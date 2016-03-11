@@ -1,0 +1,42 @@
+﻿.adminProducts input {
+    float:right;
+    position: relative;
+    right: 15px;
+}
+
+.adminprodInput {
+    position:relative;
+    top: -20px;
+    right:10px;
+    height: 20px;
+}
+
+.AdminAdding {
+    position: absolute;
+    top: 550px;
+    left: 50px;
+    float:left;
+}
+
+.AdminAdding input {
+    top: 20px;
+    left: 150px;
+    width: 200px;
+}
+
+.AdminSearch {
+    position: relative;
+    top: 10px;
+    left: 240px;
+}
+.adminAllCategories p {
+    position: relative;
+    top: 600px;
+    right: 900px;
+}
+.adminAllCategories li {
+    position: relative;
+    top: 600px;
+    right: 900px;
+}
+

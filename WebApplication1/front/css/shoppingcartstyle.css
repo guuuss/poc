@@ -1,0 +1,33 @@
+﻿.shoppingcartProducts div{
+
+}
+
+.shoppingcartProducts  li{
+    list-style: none;  
+    position: relative;
+}
+
+.shoppingcartProducts li div img {
+    position: relative;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    left: 20px;
+}
+
+.shoppingcartProducts li div input:last-child {
+    float: right;
+    position: relative;
+    top: -50px;
+}
+
+.shoppingcartSpecs {
+    position: relative;
+    left: 150px;
+    top: -80px;
+}
+
+.shopcartBestelling {
+    float: left;
+}
+
